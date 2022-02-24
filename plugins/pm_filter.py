@@ -71,7 +71,7 @@ async def next_page(bot, query):
 
     ident, req, key, offset = query.data.split("_")
     if int(req) not in [query.from_user.id, 0]:
-        return await query.answer("oKda", show_alert=True)
+        return await query.answer("oKEY", show_alert=True)
     try:
         offset = int(offset)
     except:
@@ -384,13 +384,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer()
     elif query.data == "start":
         buttons = [[
-            InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
-            ],[
+               InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+        ], [
+            InlineKeyboardButton('🔍 Search', switch_inline_query_current_chat=''),
+            InlineKeyboardButton('🤖 Updates', url='https://t.me/SECLK')
+        ], [
             InlineKeyboardButton('ℹ️ Help', callback_data='help'),
             InlineKeyboardButton('😊 About', callback_data='about')
-         ],[
-            InlineKeyboardButton('🔍 Search Movies Here', switch_inline_query_current_chat='')
-            ]]
+        ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.START_TXT.format(query.from_user.mention, temp.U_NAME, temp.B_NAME),
@@ -406,7 +407,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Extra Mods', callback_data='extra')
             ],[
             InlineKeyboardButton('🏠 Home', callback_data='start'),
-            InlineKeyboardButton('♨️ Status', callback_data='stats')
+            InlineKeyboardButton('🔮 Status', callback_data='stats')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -416,7 +417,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "about":
         buttons= [[
-            InlineKeyboardButton('Movie Updates', url='https://t.me/Updates_of_All')
+            InlineKeyboardButton('🤖 Updates', url='url='https://t.me/SECLK')
             ],[
             InlineKeyboardButton('🏠 Home', callback_data='start'),
             InlineKeyboardButton('🔐 Close', callback_data='close_data')
@@ -586,7 +587,7 @@ async def auto_filter(client, message):
         if imdb and imdb.get('poster'):
             await message.reply_photo(photo=imdb.get('poster'), caption=f"<b>Query: {search}</b> \n‌‌‌‌IMDb Data:\n\n🏷 Title: <a href={imdb['url']}>{imdb.get('title')}</a>\n🎭 Genres: {imdb.get('genres')}\n📆 Year: <a href={imdb['url']}/releaseinfo>{imdb.get('year')}</a>\n🌟 Rating: <a href={imdb['url']}/ratings>{imdb.get('rating')}</a> / 10 \n\n<b><a href='https://t.me/Pokemon_Academy'>©️ ᴘᴏᴋᴇᴍᴏɴ ᴀᴄᴀᴅᴇᴍʏ</a> ‌‌‌‌‎ ­  ­  ­  ­  ­  </b>", reply_markup=InlineKeyboardMarkup(btn))
         elif imdb:
-            await message.reply_text(f"<b>Query: {search}</b> \n‌‌‌‌IMDb Data:\n\n🏷 Title: <a href={imdb['url']}>{imdb.get('title')}</a>\n🎭 Genres: {imdb.get('genres')}\n📆 Year: <a href={imdb['url']}/releaseinfo>{imdb.get('year')}</a>\n🌟 Rating: <a href={imdb['url']}/ratings>{imdb.get('rating')}</a> / 10 \n\n<b><a href='https://t.me/Pokemon_Academy'>©️ ᴘᴏᴋᴇᴍᴏɴ ᴀᴄᴀᴅᴇᴍʏ</a> ‌‌‌‌‎ ­  ­  ­  ­  ­  </b>", reply_markup=InlineKeyboardMarkup(btn))
+            await message.reply_text(f"<b>Query: {search}</b> \n\n🏷 Title: <a href={imdb['url']}>{imdb.get('title')}</a>\n🎭 Genres: {imdb.get('genres')}\n📆 Year: <a href={imdb['url']}/releaseinfo>{imdb.get('year')}</a>\n🌟 Rating: <a href={imdb['url']}/ratings>{imdb.get('rating')}</a> / 10 \n\n<b><a href='https://t.me/SECLK'>©️ ᴘᴏᴋᴇᴍᴏɴ ᴀᴄᴀᴅᴇᴍʏ</a> ‌‌‌‌‎ ­  ­  ­  ­  ­  </b>", reply_markup=InlineKeyboardMarkup(btn))
         else:
-            await message.reply_text(f"<b>Here is What I Found In My Database For Your Query {search} ‌‌‌‌‎ \n\n<a href='https://t.me/Pokemon_Academy'>©️ ᴘᴏᴋᴇᴍᴏɴ ᴀᴄᴀᴅᴇᴍʏ</a> ‌‌‌‌‎ ­  ­  ­  ­  ­  </b>", reply_markup=InlineKeyboardMarkup(btn))
+            await message.reply_text(f"<b>Here is What I Found In My Database For Your Query {search} ‌‌‌‌‎ \n\n<a href='https://t.me/Pokemon_Academy'>©️ ᴍᴏʀᴇ ʙᴏᴛꜱ</a></b>", reply_markup=InlineKeyboardMarkup(btn))
         
